@@ -52,7 +52,8 @@ Run once: Indexes are built and saved for reuse across search sessions
 
 #  Project Structure
 
-├── UI//
+├── UI
+
 │   └── main.py              # Streamlit interface
 ├── Logic/
 │   ├── Preprocess.py        # Cleaning, stemming, lemmatization
