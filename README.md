@@ -2,7 +2,7 @@
 
 A complete **Information Retrieval (IR) pipeline** for book discovery, implementing everything from near-duplicate detection to contextual snippet generation. Built as project for Modern Information Retrieval course at Sharif University of Technology.
 
-## 🎯 Features
+## Features
 
 - **Smart Search Engine** - Three ranking models (VSM, BM25, Unigram)
 - **Spell Correction** - Hybrid Jaccard + TF scoring for typo-tolerant search
@@ -52,7 +52,7 @@ Run once: Indexes are built and saved for reuse across search sessions
 
 #  Project Structure
 
-├── UI/
+├── UI//
 │   └── main.py              # Streamlit interface
 ├── Logic/
 │   ├── Preprocess.py        # Cleaning, stemming, lemmatization
