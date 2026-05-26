@@ -50,61 +50,15 @@ Tiered indexing: Documents partitioned by importance for unsafe ranking optimiza
 
 Run once: Indexes are built and saved for reuse across search sessions
 
-#  Project Structure
+## Project Structure
 
-├── UI
-
-│   └── main.py                      # Streamlit interface
-
-├── Logic
-
-│   ├── indexer                      # Indexing module
-
-│   │   ├── index.py                 # Main indexing logic
-
-│   │   ├── tiered_index.py          # Tiered index implementation
-
-│   │   └── index_reader.py          # Read saved indexes
-
-│   ├── preprocess.py                # Cleaning, stemming, lemmatization
-
-│   ├── LSH.py                       # MinHash + near-duplicate detection
-
-│   ├── spell_correction.py          # Jaccard + TF correction
-
-│   ├── Scorer.py                    # VSM, BM25, Unigram models
-
-│   ├── Search.py                    # Safe/unsafe ranking orchestration
-
-│   ├── snippet.py                   # Contextual window extraction
-
-│   ├── Evaluation.py                # MAP, NDCG, MRR metrics
-
-│   └── utils.py                     # Helper functions
-
-├── index                            # Saved indexes (auto-generated)
-
-│   ├── description_index.json
-
-│   ├── genres_index.json
-
-│   ├── characters_index.json
-
-│   └── ...
-
-├── indexes/                         # Spell correction data
-
-│   └── spell_correction.pkl
-
-├── crawled.json                     # Raw crawled data
-
-├── preprocessed.json                # Preprocessed documents
-
-├── top_3000_rated_books.csv         # Dataset
-
-├── stopwords.txt                    # Stopwords list
-
-└── requirements.txt
+| Module | Files |
+|--------|-------|
+| **UI** | `main.py` |
+| **Logic** | `preprocess.py`, `LSH.py`, `spell_correction.py`, `Scorer.py`, `Search.py`, `snippet.py`, `Evaluation.py`, `utils.py` |
+| **Indexer** | `index.py`, `tiered_index.py`, `index_reader.py`, `document_lengths_index.py`, `metadata_index.py` |
+| **Data** | `crawled.json`, `preprocessed.json`, `top_3000_rated_books.csv`, `stopwords.txt` |
+| **Indexes** | `index/` (JSON index files), `indexes/` (spell correction pickle) |
 
 # Technologies Used
 Python 3.8+ - Core logic
