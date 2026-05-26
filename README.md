@@ -58,7 +58,7 @@ Example: "whle" -> "while"
 | **Data** | `crawled.json`, `preprocessed.json`, `top_3000_rated_books.csv`, `stopwords.txt` |
 | **Indexes** | `index/` (JSON index files), `indexes/` (spell correction pickle) |
 
-# Technologies Used
+## Technologies Used
 Python 3.8+ - Core logic
 
 Streamlit - Interactive UI
@@ -69,7 +69,7 @@ NLTK - Tokenization, stopwords, stemming
 
 Datasketch - MinHash LSH implementation
 
-📝 Notes
+## Notes
 All modules communicate through well-defined interfaces
 
 Original architecture preserved while adding custom optimizations
