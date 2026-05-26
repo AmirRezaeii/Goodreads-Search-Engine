@@ -12,43 +12,41 @@ A complete **Information Retrieval (IR) pipeline** for book discovery, implement
 - **Comprehensive Evaluation** - MAP, NDCG, MRR, Precision, Recall metrics
 
 ## Core Implementation Details
-1. Near-Duplicate Detection (MinHash LSH)
-Shingling: 2-word shingles convert text to sets
 
-MinHash Signatures: 100 permutations for compact representation
+**1. Near-Duplicate Detection (MinHash LSH)**
 
-LSH Bands: 20 bands × 5 rows per band for candidate detection
+- Shingling: 2-word shingles convert text to sets
+- MinHash Signatures: 100 permutations for compact representation
+- LSH Bands: 20 bands x 5 rows per band for candidate detection
+- Verification: Tested against LSHFakeData.json
 
-Verification: Tested against LSHFakeData.json (every consecutive pair flagged as duplicate)
+**2. Spell Correction Pipeline**
 
-2. Spell Correction Pipeline
-python
-# Example: "whle" → "while"
-1. Candidate generation via k-gram Jaccard similarity
-2. Re-ranking using Normalized TF scores from corpus
-3. Returns top correction with confidence
-3. Scoring Models Implemented
-Model	Description	Key Features
-VSM	Vector Space Model	lnc.ltc weighting, cosine normalization
-BM25	Okapi BM25	TF saturation + length normalization (k1=1.5, b=0.75)
-Unigram	Language Model	Supports Naive / Bayes / Mixture smoothing
-4. Smart Snippet Algorithm
-Normalizes document for search, extracts from original raw text
+Example: "whle" -> "while"
 
-Identifies optimal windows maximizing query term density
+- Step 1: Candidate generation via k-gram Jaccard similarity
+- Step 2: Re-ranking using Normalized TF scores from corpus
+- Step 3: Returns top correction with confidence
 
-Merges windows with ... and highlights terms as ***term***
+**3. Scoring Models**
 
-Returns missing query words separately
+- VSM: Vector Space Model with lnc.ltc weighting and cosine normalization
+- BM25: Okapi BM25 with TF saturation and length normalization (k1=1.5, b=0.75)
+- Unigram: Language Model with Naive/Bayes/Mixture smoothing
 
-5. Indexing Strategy
-Separate inverted indexes: descriptions, genres, characters
+**4. Smart Snippet Algorithm**
 
-Structure: {term: {doc_id: term_frequency}}
+- Normalizes document for search, extracts from original raw text
+- Identifies optimal windows maximizing query term density
+- Merges windows with "..." and highlights terms as "***term***"
+- Returns missing query words separately
 
-Tiered indexing: Documents partitioned by importance for unsafe ranking optimization
+**5. Indexing Strategy**
 
-Run once: Indexes are built and saved for reuse across search sessions
+- Separate inverted indexes for descriptions, genres, characters
+- Structure: {term: {doc_id: term_frequency}}
+- Tiered indexing for unsafe ranking optimization
+- Built once, saved for reuse across search sessions
 
 ## Project Structure
 
